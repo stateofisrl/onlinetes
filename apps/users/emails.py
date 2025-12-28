@@ -10,20 +10,12 @@ from django.utils.html import strip_tags
 
 def get_admin_dashboard_url():
     """Get admin dashboard URL."""
-    if settings.DEBUG:
-        return "http://127.0.0.1:8001/admin/"
-    else:
-        domain = settings.ALLOWED_HOSTS[0] if settings.ALLOWED_HOSTS and settings.ALLOWED_HOSTS[0] != '*' else 'yourdomain.com'
-        return f"https://{domain}/admin/"
+    return f"{settings.SITE_URL}/admin/"
 
 
 def get_dashboard_url():
     """Get user dashboard URL."""
-    if settings.DEBUG:
-        return "http://127.0.0.1:8001/dashboard/"
-    else:
-        domain = settings.ALLOWED_HOSTS[0] if settings.ALLOWED_HOSTS and settings.ALLOWED_HOSTS[0] != '*' else 'yourdomain.com'
-        return f"https://{domain}/dashboard/"
+    return f"{settings.SITE_URL}/dashboard/"
 
 
 def send_password_reset_email(user, reset_link):
@@ -106,7 +98,7 @@ def send_deposit_notification(deposit):
             </div>
             {status_message}
             <div style="text-align: center; margin: 30px 0;">
-                <a href="{settings.ALLOWED_HOSTS[0] if settings.ALLOWED_HOSTS and settings.ALLOWED_HOSTS[0] != '*' else 'http://127.0.0.1:8001'}/dashboard/" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+                <a href="{settings.SITE_URL}/dashboard/" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                     View Dashboard
                 </a>
             </div>
@@ -149,7 +141,7 @@ def send_withdrawal_notification(withdrawal):
             </div>
             {"<p style='color: #4ade80; line-height: 1.6;'>✓ Your funds have been sent to your account.</p>" if withdrawal.status == 'completed' else "<p style='color: #f87171; line-height: 1.6;'>✗ Your balance has been refunded. Contact support for details.</p>" if withdrawal.status == 'rejected' else "<p style='color: #fbbf24; line-height: 1.6;'>⏳ Your withdrawal is being processed.</p>"}
             <div style="text-align: center; margin: 30px 0;">
-                <a href="{settings.ALLOWED_HOSTS[0] if settings.ALLOWED_HOSTS and settings.ALLOWED_HOSTS[0] != '*' else 'http://127.0.0.1:8001'}/withdrawals/" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+                <a href="{settings.SITE_URL}/withdrawals/" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                     View Withdrawals
                 </a>
             </div>
