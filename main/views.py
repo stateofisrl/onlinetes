@@ -20,6 +20,8 @@ User = get_user_model()
 
 
 def homepage(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     vehicles = Vehicle.objects.all()[:3]
     return render(request, 'home.html', {'vehicles': vehicles})
 
