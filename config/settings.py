@@ -37,6 +37,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-change-in-production'
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
+# Site URL for email links (use production URL or localhost)
+SITE_URL = os.environ.get('SITE_URL', 'http://127.0.0.1:8001')
+
 # Ensure hosts are parsed correctly and whitespace is removed
 ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',') if h.strip()]
 
