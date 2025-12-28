@@ -118,7 +118,7 @@ html_message = f"""
             <!-- Track Order CTA -->
             <div style="text-align: center; margin: 30px 0;">
                 <p style="color: #4ade80; font-size: 14px; margin: 0 0 15px 0;">✓ Track your order in real-time</p>
-                <a href="http://127.0.0.1:8001/track/?tracking_id={tracking.tracking_id}" style="background-color: #4ade80; color: #000; padding: 14px 40px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 16px; transition: background-color 0.3s;">
+                <a href="{settings.SITE_URL}/track/?tracking_id={tracking.tracking_id}" style="background-color: #4ade80; color: #000; padding: 14px 40px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 16px; transition: background-color 0.3s;">
                     Track Your Order
                 </a>
             </div>

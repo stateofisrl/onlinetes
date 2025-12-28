@@ -116,7 +116,7 @@ html_message = f"""
         </div>
         <p style="color: #4ade80; line-height: 1.6; margin-top: 20px;">✓ After making payment, submit your transaction proof:</p>
         <div style="text-align: center; margin: 30px 0;">
-            <a href="http://127.0.0.1:8001/order/{order.id}/payment/" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            <a href="{settings.SITE_URL}/order/{order.id}/payment/" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                 Submit Payment Proof
             </a>
         </div>
@@ -173,7 +173,7 @@ html_message = f"""
         </div>
         <p style="color: #4ade80; line-height: 1.6;">✓ You can track your order anytime using the link below:</p>
         <div style="text-align: center; margin: 30px 0;">
-            <a href="http://127.0.0.1:8001/track/?tracking_id={tracking.tracking_id}" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            <a href="{settings.SITE_URL}/track/?tracking_id={tracking.tracking_id}" style="background-color: #fff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                 Track Your Order
             </a>
         </div>
