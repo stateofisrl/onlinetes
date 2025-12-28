@@ -43,7 +43,7 @@ services:
       - key: EMAIL_HOST_USER
         value: "forexbtte@gmail.com"
       - key: EMAIL_HOST_PASSWORD
-        value: "pnvyhebkhblbknwn"
+        sync: false
       - key: DEFAULT_FROM_EMAIL
         value: "forexbtte@gmail.com"
       - key: ADMIN_EMAIL
@@ -56,9 +56,9 @@ services:
       - key: DJANGO_EMAIL_PORT
         value: "587"
       - key: DJANGO_EMAIL_USER
-        value: "forexbtte@gmail.com"
+        sync: false
       - key: DJANGO_EMAIL_PASSWORD
-        value: "pnvyhebkhblbknwn"
+        sync: false
       - key: DJANGO_DEFAULT_FROM
         value: "forexbtte@gmail.com"
       - key: DJANGO_ADMIN_EMAIL
