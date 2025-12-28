@@ -1,0 +1,199 @@
+{% extends 'main/base.html' %}
+{% block title %}Invest{% endblock %}
+{% block content %}
+<section class="py-28 text-center bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen" style="background-image: url('https://images.unsplash.com/photo-1556226286-dd3afb57f313?w=1600&h=600&fit=crop');">
+  <div class="bg-black/40 px-5 py-16 rounded-lg max-w-4xl mx-auto">
+    <h1 class="text-white text-4xl font-bold mb-3">Investment Opportunities</h1>
+    <p class="text-gray-100 text-lg">Support the transition to sustainable energy and electric vehicle infrastructure globally.</p>
+  </div>
+</section>
+
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="bg-gray-50 p-8 rounded-lg mb-10">
+      <h2 class="text-center text-3xl font-bold mb-8">Global Impact & Opportunity</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Tesla's Market Position</h3>
+          <p class="text-gray-600 mb-4">As a leader in electric vehicle manufacturing and renewable energy, we're expanding production capacity, developing next-generation battery technology, and building charging infrastructure worldwide. Our investments fuel this growth.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li>✓ Global EV market expansion</li>
+            <li>✓ Energy storage solutions</li>
+            <li>✓ Manufacturing facilities</li>
+            <li>✓ Battery innovation</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">African Opportunities</h3>
+          <p class="text-gray-600 mb-4">Africa represents a significant opportunity for EV adoption and sustainable energy infrastructure. We're investing in solar installations, charging networks, and local manufacturing partnerships to accelerate energy independence and transportation electrification.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li>✓ Solar microgrids</li>
+            <li>✓ Charging infrastructure</li>
+            <li>✓ Local manufacturing</li>
+            <li>✓ Energy access projects</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="text-center text-3xl font-bold mb-8">Investment Tiers</h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      <!-- Bronze Tier -->
+      <div class="bg-white border-2 border-gray-300 rounded-lg p-6 text-center">
+        <h3 class="text-2xl font-bold text-amber-700 mb-3">Bronze</h3>
+        <p class="text-lg font-bold mb-4">$2,000–$49,999</p>
+        <div class="border-t border-gray-200 my-4"></div>
+        <ul class="text-left text-sm space-y-2 text-gray-700">
+          <li>✓ Monthly investment updates</li>
+          <li>✓ Impact reports</li>
+          <li>✓ Community forum access</li>
+          <li>✓ Investor badge</li>
+        </ul>
+      </div>
+
+      <!-- Silver Tier (Featured) -->
+      <div class="bg-white border-4 border-gray-400 rounded-lg p-6 text-center scale-105 shadow-lg">
+        <h3 class="text-2xl font-bold text-gray-400 mb-3">Silver</h3>
+        <p class="text-lg font-bold mb-4">$50,000–$499,999</p>
+        <div class="border-t border-gray-200 my-4"></div>
+        <ul class="text-left text-sm space-y-2 text-gray-700 mb-4">
+          <li>✓ All Bronze benefits</li>
+          <li>✓ Quarterly insights briefing</li>
+          <li>✓ Dedicated investor relations</li>
+          <li>✓ Portfolio access</li>
+        </ul>
+        <p class="font-bold text-sm text-gray-900">⭐ MOST POPULAR</p>
+      </div>
+
+      <!-- Gold Tier -->
+      <div class="bg-white border-2 border-yellow-400 rounded-lg p-6 text-center">
+        <h3 class="text-2xl font-bold text-yellow-500 mb-3">Gold</h3>
+        <p class="text-lg font-bold mb-4">$499,999+</p>
+        <div class="border-t border-gray-200 my-4"></div>
+        <ul class="text-left text-sm space-y-2 text-gray-700">
+          <li>✓ All Silver benefits</li>
+          <li>✓ Priority briefings (6x/year)</li>
+          <li>✓ Exclusive investor events</li>
+          <li>✓ Strategic input opportunities</li>
+          <li>✓ Custom reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tier Comparison Table -->
+    <h2 class="text-center text-3xl font-bold mb-8">Tier Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="table-auto border-collapse w-full border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-4 py-2 text-left">Feature</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Bronze</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Silver</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Gold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Minimum Capital</td>
+            <td class="border border-gray-300 px-4 py-2">$2,000</td>
+            <td class="border border-gray-300 px-4 py-2">$50,000</td>
+            <td class="border border-gray-300 px-4 py-2">$499,999+</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2">Updates</td>
+            <td class="border border-gray-300 px-4 py-2">Monthly</td>
+            <td class="border border-gray-300 px-4 py-2">Quarterly</td>
+            <td class="border border-gray-300 px-4 py-2">Priority Briefings</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Investor Relations</td>
+            <td class="border border-gray-300 px-4 py-2">Community Forum</td>
+            <td class="border border-gray-300 px-4 py-2">Dedicated Contact</td>
+            <td class="border border-gray-300 px-4 py-2">Strategic Input</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2">Events</td>
+            <td class="border border-gray-300 px-4 py-2">—</td>
+            <td class="border border-gray-300 px-4 py-2">—</td>
+            <td class="border border-gray-300 px-4 py-2">Exclusive Events</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="bg-gray-100 p-6 rounded-lg mb-10">
+      <h3 class="text-lg font-bold mb-3">Expected Returns & Opportunity</h3>
+      <p class="text-gray-700 mb-3"><strong>Important Disclaimer:</strong> This information is provided for educational purposes only and should not be considered financial advice. Investment returns are not guaranteed and depend on market conditions, company performance, and various macroeconomic factors. Past performance does not guarantee future results.</p>
+      <p class="text-gray-700">Potential returns vary by tier and market conditions. Historical performance in the EV and renewable energy sectors has shown strong growth trends, but future performance is uncertain. All investments carry risk including potential loss of principal.</p>
+    </div>
+
+    <!-- ROI Explanation -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+      <h3 class="text-2xl font-bold mb-3">ROI Explanation</h3>
+      <p class="text-gray-700">Returns are driven by expansion in EV adoption, manufacturing capacity, energy storage, and charging infrastructure. We focus on long-term value creation through technology leadership and operational efficiency. ROI timelines vary; investors should consider their risk tolerance and time horizon.</p>
+    </div>
+
+    <!-- Risk Disclosure -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded mb-10">
+      <h4 class="font-bold mb-2">⚠️ Risk Disclosure</h4>
+      <p class="text-gray-700 text-sm">Investments in emerging technologies and international markets carry significant risk. Energy markets are subject to regulatory changes, technological disruption, and competitive pressures. Geographic and political risks may also affect returns. This investment is suitable only for investors who can afford potential loss.</p>
+    </div>
+
+    <!-- Investment Benefits -->
+    <h2 class="text-center text-3xl font-bold mb-8">Investment Benefits</h2>
+    <div class="grid md:grid-cols-2 gap-6 mb-10">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h4 class="font-bold mb-3">Impact Transparency</h4>
+        <p class="text-gray-600">Receive detailed reports on how your capital drives EV adoption, renewable energy projects, and infrastructure development worldwide.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h4 class="font-bold mb-3">Investor Community</h4>
+        <p class="text-gray-600">Join a global network of like-minded investors supporting sustainable energy. Network with founders, advisors, and fellow investors.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h4 class="font-bold mb-3">Regular Updates</h4>
+        <p class="text-gray-600">Stay informed with monthly, quarterly, or exclusive briefings depending on your tier. Receive real-time project updates and market insights.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h4 class="font-bold mb-3">Strategic Involvement</h4>
+        <p class="text-gray-600">Higher tiers gain opportunities to provide input on strategic initiatives and project direction. Influence the future of sustainable energy.</p>
+      </div>
+    </div>
+
+    <!-- Investment Form -->
+    <h2 class="text-center text-3xl font-bold mb-8">Join Our Investment Community</h2>
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto">
+      <form method="post" action="{% url 'main:invest' %}" class="space-y-6">
+        {% csrf_token %}
+        {% for field in form %}
+          <div>
+            <label for="{{ field.id_for_label }}" class="block font-semibold text-gray-900 mb-2">{{ field.label }}</label>
+            {% if field.field.widget.input_type == 'textarea' %}
+              <textarea name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" rows="5" placeholder="{{ field.field.widget.attrs.placeholder|default:'' }}" {{ field.field.required|yesno:'required,' }}></textarea>
+            {% elif field.field.widget.input_type == 'select' %}
+              <select name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" {{ field.field.required|yesno:'required,' }}>
+                <option value="">-- Select {{ field.label }} --</option>
+                {% for choice_value, choice_label in field.field.choices %}
+                  <option value="{{ choice_value }}">{{ choice_label }}</option>
+                {% endfor %}
+              </select>
+            {% elif field.field.widget.input_type == 'number' %}
+              <input type="number" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" placeholder="{{ field.field.widget.attrs.placeholder|default:'' }}" min="{{ field.field.widget.attrs.min|default:'0' }}" max="{{ field.field.widget.attrs.max|default:'' }}" {{ field.field.required|yesno:'required,' }} />
+            {% elif field.field.widget.input_type == 'email' %}
+              <input type="email" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" placeholder="{{ field.field.widget.attrs.placeholder|default:'' }}" {{ field.field.required|yesno:'required,' }} />
+            {% else %}
+              <input type="text" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" placeholder="{{ field.field.widget.attrs.placeholder|default:'' }}" {{ field.field.required|yesno:'required,' }} />
+            {% endif %}
+            {% if field.errors %}
+              <div class="text-red-600 text-sm mt-2">{{ field.errors.0 }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Submit Investment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

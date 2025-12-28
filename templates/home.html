@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<section class="py-28 text-center bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen" style="background-image: url('https://images.unsplash.com/photo-1722499205558-e23603eeb43d?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <div class="bg-black/40 px-5 py-16 rounded-lg max-w-4xl mx-auto">
+    <h1 class="text-white text-5xl font-bold mb-4">Accelerating the world's transition to sustainable energy</h1>
+    <p class="text-gray-100 text-lg mb-8">Tesla builds electric vehicles and energy products that are beautiful, safe, and sustainable.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="{% url 'main:vehicles' %}" class="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Explore Vehicles</a>
+      <a href="{% url 'main:invest' %}" class="bg-transparent hover:bg-white/10 text-white border border-white font-semibold py-3 px-6 rounded-lg transition-colors">Invest Now</a>
+      <a href="{% url 'main:track' %}" class="bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Track Order</a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Vehicles -->
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-center text-3xl font-bold mb-8">Featured Vehicles</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      {% for v in vehicles %}
+        <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <img src="{{ v.image }}" alt="{{ v.name }}" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h3 class="text-lg font-bold mb-2">{{ v.name }} {% if v.model %}{{ v.model }}{% endif %}</h3>
+          <p class="text-xl font-bold text-gray-900 mb-2">${{ v.price_usd }}</p>
+          <p class="text-gray-600 mb-4">{{ v.description|truncatechars:120 }}</p>
+          <a href="{% url 'main:buy' v.id %}" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors inline-block text-center">Buy Now</a>
+        </div>
+      {% empty %}
+        <p class="col-span-3 text-center text-gray-600">No featured vehicles yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Technology Section -->
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-4">Technology</h2>
+    <p class="text-gray-600 mb-8">Tesla's electric powertrains, battery technology, over-the-air software updates and Autopilot push the boundaries of modern transportation. Every vehicle is engineered from the ground up to be the safest, quickest, and most efficient on the road.</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-5 rounded-lg shadow-md">
+        <img src="https://images.unsplash.com/photo-1763543007050-4dac73ffc67f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Batteries" class="w-full h-44 object-cover rounded-lg mb-3">
+        <h3 class="text-lg font-bold mb-2">Advanced Battery Technology</h3>
+        <p class="text-gray-600">High density cells and intelligent thermal management deliver industry-leading range. Our proprietary battery packs are designed for longevity and performance in all conditions.</p>
+      </div>
+      <div class="bg-white p-5 rounded-lg shadow-md">
+        <img src="https://images.unsplash.com/photo-1702843431695-68282d907e0f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Starlink" class="w-full h-44 object-cover rounded-lg mb-3">
+        <h3 class="text-lg font-bold mb-2">Starlink</h3>
+        <p class="text-gray-600">Starlink — founded by Elon Musk through SpaceX — is a low-earth-orbit satellite constellation providing high-speed, low-latency internet globally. Integrated connectivity ensures vehicles and energy products stay online for telemetry, navigation updates, and remote diagnostics even in remote areas.</p>
+        <p class="text-sm text-gray-500 mt-2"><strong>Founder:</strong> Elon Musk — <em>SpaceX's satellite internet network powering connected vehicles and services.</em></p>
+      </div>
+      <div class="bg-white p-5 rounded-lg shadow-md">
+        <img src="https://images.unsplash.com/photo-1553260188-75a8d6205b6c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Autopilot" class="w-full h-44 object-cover rounded-lg mb-3">
+        <h3 class="text-lg font-bold mb-2">Autopilot & Self-Driving</h3>
+        <p class="text-gray-600">Advanced driver assistance systems designed for safety and convenience. Our autonomous capabilities are continuously improved through real-world data and machine learning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Safety Section -->
+<section class="py-10 bg-center bg-cover bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1549399542-7e3f8b83ad38?w=1200&h=400&fit=crop');">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="bg-black/50 p-10 rounded-lg">
+      <h2 class="text-white text-3xl font-bold mb-4">Safety</h2>
+      <p class="text-gray-100">Designed from the ground up for occupant protection — strong structures, crumple zones, and intelligent systems. Every vehicle undergoes rigorous testing to exceed global safety standards. Our collision avoidance systems and structural integrity are industry-leading.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Energy Products Section -->
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Energy Products</h2>
+        <p class="text-gray-600">Solar, Powerwall, and large-scale energy storage solutions enable homes and businesses to use clean energy reliably. We believe the future is sustainable, and we're committed to building the technologies that make that possible. From residential solar installations to utility-scale batteries, we're transforming how the world uses energy.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=500&h=400&fit=crop&auto=format&q=80" alt="Solar Energy" class="w-full h-80 object-cover rounded-lg">
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-10 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8">Testimonials</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop" alt="A. Gomez" class="w-16 h-16 rounded-full mb-4">
+        <p class="text-gray-600 italic mb-3">"Our Model S has transformed daily commutes — stellar range and performance."</p>
+        <p class="font-bold">— A. Gomez</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop" alt="K. Mensah" class="w-16 h-16 rounded-full mb-4">
+        <p class="text-gray-600 italic mb-3">"Powerwall keeps our home comfortable and resilient during outages."</p>
+        <p class="font-bold">— K. Mensah</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop" alt="L. Chen" class="w-16 h-16 rounded-full mb-4">
+        <p class="text-gray-600 italic mb-3">"Service was exceptional and quick. Delivery matched their estimate."</p>
+        <p class="font-bold">— L. Chen</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block scripts %}
+<script>
+// Reveal-on-scroll: add `in-view` to sections and cards when they enter viewport
+document.addEventListener('DOMContentLoaded', function () {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        // once visible, unobserve to avoid repeated triggers
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('section').forEach(el => io.observe(el));
+
+  // Background image transition for hero: fade on load and when mouse hovers
+  const hero = document.querySelector('.py-28');
+  if (hero) {
+    hero.style.transition = 'background-image 0.8s ease-in-out, background-position 0.8s ease-in-out';
+    // Add subtle parallax on mouse move
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const px = (x - 0.5) * 10; // range -5 to 5
+      const py = (y - 0.5) * 6;
+      hero.style.backgroundPosition = `${50 + px}% ${50 + py}%`;
+    });
+    hero.addEventListener('mouseleave', () => {
+      hero.style.backgroundPosition = 'center';
+    });
+  }
+});
+</script>
+{% endblock %}
+
+{% endblock %}

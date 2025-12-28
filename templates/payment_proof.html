@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Submit Payment Proof - Order #{{ order.id }}{% endblock %}
+{% block content %}
+<section class="py-16 bg-white min-h-screen">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="bg-gray-50 border border-gray-200 rounded-lg p-8">
+      <h1 class="text-3xl font-bold mb-6">Submit Payment Proof</h1>
+      
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Order Details</h2>
+        <div class="space-y-2 text-gray-700">
+          <p><span class="font-semibold">Order ID:</span> #{{ order.id }}</p>
+          <p><span class="font-semibold">Vehicle:</span> {{ order.vehicle.name }}</p>
+          <p><span class="font-semibold">Amount:</span> ${{ order.payment_amount|default:order.vehicle.price_usd }}</p>
+          <p><span class="font-semibold">Currency:</span> {{ order.crypto_currency }}</p>
+          <p><span class="font-semibold">Payment Address:</span></p>
+          <p class="bg-white p-3 rounded border border-gray-300 font-mono text-sm break-all">{{ order.crypto_address }}</p>
+        </div>
+      </div>
+
+      <form method="post" class="space-y-6">
+        {% csrf_token %}
+        
+        <div>
+          <label for="{{ form.payment_proof.id_for_label }}" class="block text-sm font-semibold text-gray-700 mb-2">
+            Transaction Hash / Payment Reference *
+          </label>
+          {{ form.payment_proof }}
+          {% if form.payment_proof.errors %}
+            <p class="text-red-600 text-sm mt-1">{{ form.payment_proof.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <label for="{{ form.payment_proof_image.id_for_label }}" class="block text-sm font-semibold text-gray-700 mb-2">
+            Payment Screenshot URL (Optional)
+          </label>
+          {{ form.payment_proof_image }}
+          <p class="text-gray-500 text-sm mt-1">Upload your screenshot to a service like imgur.com and paste the link here</p>
+          {% if form.payment_proof_image.errors %}
+            <p class="text-red-600 text-sm mt-1">{{ form.payment_proof_image.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-lg transition-colors">
+          Submit Payment Proof
+        </button>
+      </form>
+
+      <div class="mt-8 text-center">
+        <a href="{% url 'main:home' %}" class="text-gray-600 hover:text-black">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  input[type="text"],
+  input[type="url"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+  input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  }
+</style>
+{% endblock %}

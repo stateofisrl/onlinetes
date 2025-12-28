@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Buy {{ vehicle }}{% endblock %}
+{% block content %}
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h1 class="text-3xl font-bold mb-6">Order {{ vehicle }}</h1>
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-2xl">
+      <form method="post" action="{% url 'main:buy' vehicle.id %}" class="space-y-6">
+        {% csrf_token %}
+        <input type="hidden" name="vehicle" value="{{ vehicle.id }}">
+        {% for field in form %}
+          {% if field.name != 'vehicle' %}
+            <div>
+              <label for="{{ field.id_for_label }}" class="block font-semibold text-gray-900 mb-2">{{ field.label }}</label>
+              {% if field.field.widget.input_type == 'email' %}
+                <input type="email" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" {{ field.field.required|yesno:'required,' }} />
+              {% elif field.field.widget.input_type == 'tel' %}
+                <input type="tel" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" {{ field.field.required|yesno:'required,' }} />
+              {% elif field.name == 'address' %}
+                <textarea name="{{ field.name }}" id="{{ field.id_for_label }}" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" placeholder="Full delivery address">{{ field.value|default:'' }}</textarea>
+              {% else %}
+                <input type="text" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" {{ field.field.required|yesno:'required,' }} />
+              {% endif %}
+              {% if field.errors %}
+                <div class="text-red-600 text-sm mt-2">{{ field.errors.0 }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+        <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Place Order</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

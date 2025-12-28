@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% block title %}Vehicles{% endblock %}
+{% block content %}
+<section class="py-28 text-center bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen" style="background-image: url('https://images.unsplash.com/photo-1617704548623-340376564e68?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <div class="bg-black/40 px-5 py-16 rounded-lg max-w-4xl mx-auto">
+    <h1 class="text-white text-4xl font-bold mb-3">Vehicles</h1>
+    <p class="text-gray-100 text-lg">Explore our lineup of electric vehicles — performance, range, and cutting-edge technology.</p>
+  </div>
+</section>
+
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-center text-3xl font-bold mb-8">Why Choose Tesla?</h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      <div class="bg-white p-5 rounded-lg shadow-md">
+        <h4 class="font-bold mb-2">Unmatched Performance</h4>
+        <p class="text-gray-600">Instant torque and acceleration that transforms every drive. From city commutes to open highways, experience the future of mobility.</p>
+      </div>
+      <div class="bg-white p-5 rounded-lg shadow-md">
+        <h4 class="font-bold mb-2">Superior Range</h4>
+        <p class="text-gray-600">Advanced battery technology delivers exceptional range per charge. Charge less, drive more, and explore further than ever before.</p>
+      </div>
+      <div class="bg-white p-5 rounded-lg shadow-md">
+        <h4 class="font-bold mb-2">Fast Charging</h4>
+        <p class="text-gray-600">Access our global Supercharger network for rapid charging. Get hundreds of miles of range in just 30 minutes.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for v in vehicles %}
+        <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-full h-48 bg-gray-200 rounded-lg mb-3 overflow-hidden">
+            {% if v.image %}
+              <img src="{{ v.image }}" alt="{{ v.name }}" class="w-full h-full object-cover">
+            {% elif v.name == 'Model S' %}
+              <img src="https://images.unsplash.com/photo-1617469767537-b85d00004b58?w=400&h=300&fit=crop" alt="{{ v.name }}" class="w-full h-full object-cover">
+            {% elif v.name == 'Model 3' %}
+              <img src="https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop" alt="{{ v.name }}" class="w-full h-full object-cover">
+            {% elif v.name == 'Model X' %}
+              <img src="https://images.unsplash.com/photo-1606664515524-2682dc4c4b02?w=400&h=300&fit=crop" alt="{{ v.name }}" class="w-full h-full object-cover">
+            {% else %}
+              <img src="https://images.unsplash.com/photo-1560958089-b8a46dd52415?w=400&h=300&fit=crop" alt="{{ v.name }}" class="w-full h-full object-cover">
+            {% endif %}
+          </div>
+          <h3 class="text-lg font-bold mb-2">{{ v.name }} {{ v.model }}</h3>
+          <p class="text-2xl font-bold text-gray-900 mb-2">${{ v.price_usd }}</p>
+          <p class="text-gray-600 mb-4">{{ v.description|truncatechars:160 }}</p>
+          <ul class="space-y-1 text-sm text-gray-700 mb-4">
+            <li><strong>Battery:</strong> {{ v.battery_kwh }} kWh</li>
+            <li><strong>Top speed:</strong> {{ v.top_speed_mph }} mph</li>
+            <li><strong>0–60:</strong> {{ v.zero_sixty }} s</li>
+            <li><strong>Range:</strong> {{ v.range_miles }} miles</li>
+            <li><strong>Charging:</strong> {{ v.charging_options }}</li>
+            <li><strong>Autopilot:</strong> {{ v.autopilot_features|default:"Available" }}</li>
+          </ul>
+          <a href="{% url 'main:buy' v.id %}" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors inline-block text-center">Buy Now</a>
+        </div>
+      {% empty %}
+        <p class="col-span-3 text-center text-gray-600">No vehicles available yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

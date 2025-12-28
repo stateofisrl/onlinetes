@@ -1,0 +1,29 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Tesla{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+  </head>
+  <body class="font-sans text-gray-900 bg-gray-50">
+    {% if messages %}
+      <div class="fixed top-4 right-4 z-50 space-y-2">
+        {% for message in messages %}
+          <div class="bg-{% if message.tags == 'error' %}red{% elif message.tags == 'success' %}green{% else %}blue{% endif %}-100 border border-{% if message.tags == 'error' %}red{% elif message.tags == 'success' %}green{% else %}blue{% endif %}-400 text-{% if message.tags == 'error' %}red{% elif message.tags == 'success' %}green{% else %}blue{% endif %}-800 px-4 py-3 rounded shadow-lg">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>

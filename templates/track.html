@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Track Order{% endblock %}
+{% block content %}
+<section class="py-28 text-center bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen" style="background-image: url('https://images.unsplash.com/photo-1586528116039-6461ff3d4d74?w=1200&h=400&fit=crop');">
+  <div class="bg-black/40 px-5 py-16 rounded-lg max-w-4xl mx-auto">
+    <h1 class="text-white text-4xl font-bold mb-3">Track Your Delivery</h1>
+    <p class="text-gray-100 text-lg">Enter your tracking ID to see the current status of your delivery.</p>
+  </div>
+</section>
+
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl mx-auto mb-8">
+      <form method="post" action="{% url 'main:track' %}" class="space-y-6">
+        {% csrf_token %}
+        {% for field in form %}
+          <div>
+            <label for="{{ field.id_for_label }}" class="block font-semibold text-gray-900 mb-2">{{ field.label }}</label>
+            <input type="text" name="{{ field.name }}" id="{{ field.id_for_label }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/10" {{ field.field.required|yesno:'required,' }} />
+            {% if field.errors %}
+        {% block scripts %}{% endblock %}
+
+        <!-- Tracking Info Sections -->
+        <section class="py-10 bg-white">
+          <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-4">How Tracking Works</h2>
+            <p class="text-gray-600 mb-8">Enter your unique Tracking ID to retrieve live status updates. We sync delivery progress across logistics partners and service centers to keep you informed.</p>
+
+            <h3 class="text-2xl font-bold mb-3">Delivery Stages</h3>
+            <ul class="list-disc pl-5 text-gray-700 mb-8">
+              <li>Order confirmed</li>
+              <li>Vehicle preparation</li>
+              <li>In transit</li>
+              <li>Out for delivery</li>
+              <li>Delivered</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold mb-3">Estimated Timelines</h3>
+            <p class="text-gray-600">Timelines vary by region and configuration. Typical delivery windows range from 2–8 weeks. You'll receive email updates along the way.</p>
+          </div>
+        </section>
+              <div class="text-red-600 text-sm mt-2">{{ field.errors.0 }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Lookup</button>
+      </form>
+    </div>
+
+    {% if not_found %}
+      <div class="max-w-2xl mx-auto bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded mb-8">
+        Tracking ID not found. Please check and try again.
+      </div>
+    {% endif %}
+
+    {% if result %}
+      <div class="max-w-2xl mx-auto bg-green-100 border-l-4 border-green-500 p-6 rounded mb-8">
+        <h3 class="text-2xl font-bold mb-4">Order Status: <span class="text-green-700">{{ result.status }}</span></h3>
+        <div class="space-y-3 mb-6">
+          <p><strong>Vehicle:</strong> {{ result.vehicle }}</p>
+          <p><strong>Customer:</strong> {{ result.customer_name }}</p>
+          <p><strong>Last updated:</strong> {{ result.last_updated|date:"F d, Y g:i A" }}</p>
+        </div>
+
+        {% if result.from_location and result.to_location %}
+        <div class="mb-6">
+          <h4 class="text-lg font-bold mb-3">Route Map:</h4>
+          <p class="mb-4"><strong>From:</strong> {{ result.from_location }}<br><strong>To:</strong> {{ result.to_location }}</p>
+          <iframe width="100%" height="300" frameborder="0" style="border:0" allowfullscreen
+            src="https://www.google.com/maps?saddr={{ result.from_location|urlencode }}&daddr={{ result.to_location|urlencode }}&output=embed">
+          </iframe>
+        </div>
+        {% elif result.to_location %}
+        <div class="mb-6">
+          <h4 class="text-lg font-bold mb-3">Delivery Location:</h4>
+          <p class="mb-4">{{ result.to_location }}</p>
+          <iframe width="100%" height="300" frameborder="0" style="border:0" allowfullscreen
+            src="https://www.google.com/maps?q={{ result.to_location|urlencode }}&output=embed">
+          </iframe>
+        </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
